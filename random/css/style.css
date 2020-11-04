@@ -1,0 +1,40 @@
+/* CSS for all 3 pages */
+
+/* background color to all pages (from main page) */
+.body{
+    background-color: #ffb950; 
+}
+
+/* background image to error pages */
+.image1{
+    background-image: url("/matchPhotos/3crosses2.jpeg");
+    background-repeat: no-repeat;
+    height: 800px;
+    margin-top: 50px;
+}
+.image2{
+    background-image: url("/matchPhotos/3crosses2.jpeg");
+}
+
+/* text color for error pages */
+.text1{
+    color: #ffb950;
+}
+
+/* text color for index and testimonies pages */
+.text2{
+    color: #3f7bba;
+}
+
+/* text color for index and testimonies pages */
+.text3{
+    color: #24405c;
+}
+
+/* created margin so that buttons still show after submitting form */
+.btm-mrgn{
+    margin-bottom: 150px;
+}
+ul {
+    list-style: none;
+}

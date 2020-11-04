@@ -1,0 +1,66 @@
+<div class="mx-5">{{!-- container --}}
+
+  {{!-- displays header text --}}
+  <h1 class="display-3 text2 text-center mt-3">Testimonies And Praise Reports</h1>
+
+  <div class="row mt-5">{{!-- row begins --}}
+
+    {{!-- 2 images on top left half of page --}}
+    <div class="col-md-3">
+      <img class="img-fluid mx-auto d-block mb-3 mb-lg-5" src="/matchPhotos/pic4.jpg">
+    </div>
+
+    <div class="col-md-3">
+      <img class="img-fluid mx-auto d-block mb-3 mb-lg-5" src="/matchPhotos/pic3.jpg">
+    </div>
+
+    {{!-- text and buttons on top right half of page --}}
+    <div class="col-md-6 text-center">{{!-- col-6 starts --}}
+      <a class="btn btn-outline-primary m-sm-2 m-xl-5" href="#bottom2">Submit a testimony</a>{{!-- takes user to bottom of page to the form --}}
+      <a class="btn btn-outline-primary m-sm-2 m-xl-5" href="/">Return to home page</a>{{!-- takes user to the home page --}}
+
+      <div class="mx-1 mx-sm-3 mx-xl-5">
+        <h1 class="my-4 text3 text-center">Here are testimonies of answered prayers and personal testimonies of what God has done in their lives.</h1>
+      </div>
+    </div>{{!-- col-6 ends --}}
+
+     {{!-- All the testimonies start here --}}
+    <div id="top2" class="col-md-12 btm-mrgn">{{!-- navigating to top of list takes you here (col-12 starts here) --}}
+      <p class="m-3 ml-5 text3">Read the wonderful stories of what God has been doing in peoples lives or submit your own.</p>
+      
+      {{!-- loops through all testimonies in DB and and posts them here  --}}
+      <ul>
+        {{#each testimony}}
+        <li class="p-3 mt-2 border-top image2">
+          <p class="text-light">
+            {{this.story}}
+            <p class="text-right text3 text-capitalize">
+              <i>{{this.name}}</i> {{this.residence}} ~ {{this.created_date}}
+              <button data-testimonyid="{{this.testimony_id}}" class="delStory ml-3 btn btn-outline-danger btn-sm">Delete!</button>
+            </p>
+          </p>
+        </li>
+        {{/each}}
+      </ul>
+
+      {{!-- This is where the bottom starts, the form to create new testimony --}}
+      <h2 id="bottom2" class="my-3 ml-5 text3">Create a testimony</h2>
+      <form id="createTestimony" class="form-group ml-5">
+        <textarea type="text" name="story" placeholder="Testimony" class="form-control" required></textarea>{{!-- gathers new testimony --}}
+        <input class="mt-3" type="text" name="name" placeholder="Name" required></input>{{!-- gathers new name --}}
+        <input class="mt-3" type="text" name="residence" placeholder="Residence" required></input><br>{{!-- gathers new residence --}}
+        <button class="mt-3 btn btn-outline-primary" type="submit">Submit</button>{{!-- sends new info to DB --}}
+        <a class="mt-3 ml-3 btn btn-outline-primary" href="#top2">View top of list</a>{{!-- all new entries go to top of list this takes you there  --}}
+      </form>
+
+      {{!-- this gives you option to return to home page --}}
+      <h3 class="mt-5 ml-5 text3">Return to prayer request page.</h3>
+      <a class="mb-5 ml-5 btn btn-outline-primary" href="/">Prayer Request</a>
+
+    </div>{{!-- col-12-ends --}}
+
+  </div>{{!-- rows ends --}}
+</div>{{!-- container ends --}}
+
+
+<script type="text/javascript" src="/javascript/testimonies.js"></script>

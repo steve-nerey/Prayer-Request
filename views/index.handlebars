@@ -1,0 +1,78 @@
+<div class="mx-5">{{!-- container --}}
+
+  {{!-- displays header text --}}
+  <h1 class="display-3 text2 text-center mt-3">Prayer Request</h1>
+  
+  <div class="row mt-5">{{!-- row begins --}}
+
+    {{!-- image on top left half of page --}}
+    <div class="col-md-6">
+      <img class="img-fluid mx-auto d-block mb-5" src="/matchPhotos/pic1.jpg">
+    </div>
+
+    {{!-- text and buttons on top right half of page --}}
+    <div class="col-md-6 col-xl-5 text-center allText">{{!-- every thing in this ('.allText') div hides when user clicks update request (first part) --}}
+      <h2 class="m-4 text3">Do you have a prayer request?</h2>
+      <a class="my-4 btn btn-outline-primary" href="#bottom1">Click here</a>{{!-- takes user to bottom of page to the form --}}
+
+      <h2 class="m-3 text3">Check out our answered prayers and testimonies page?</h2>
+      <a class="my-4 btn btn-outline-primary" href="/testimonies">Testimonies</a>{{!-- takes user to the testimonies page --}}
+    </div>{{!-- ('.allText') div ends here --}}
+
+    {{!-- text and prayer request items start here --}}
+    <div id="top1" class="col-md-12">{{!-- navigating to top of list takes you here --}}
+      <div class="allText btm-mrgn">{{!-- every thing in this ('.allText') div hides when user clicks update request (second part) --}}
+        <h3 class="my-4 mx-2 text2">Here are the prayer request. People all over the world read them and pray for these
+          request as well as our prayer team. So please pray also for these request and submit your own so we can pray
+          for you. If you have submitted a request and would like to update it then you can find your request and click
+          the update request button. God Bless You and Thank You.</h3>
+
+        {{!-- loops through all prayer request items in DB and and posts them here  --}}
+        <ul>
+          {{#each prayers}}
+          <li class="pt-3 border-top">
+            <p>
+              {{this.request}}
+              <p class="text-right text3 text-capitalize">
+                <i>{{this.name}}</i> {{this.residence}} ~ {{this.last_date}}
+                <button data-prayerid="{{this.id}}" class="delPrayer ml-3 btn btn-outline-danger btn-sm">Delete!</button>
+                <button data-prayerid="{{this.id}}" class="updateRequest m-3 btn btn-outline-primary btn-sm">Update request</button>
+              </p>
+            </p>
+          </li>
+          {{/each}}
+        </ul>
+
+        {{!-- This is where the bottom starts, the form to create new prayer request --}}
+        <div id="bottom1" class="mt-5"></div>{{!-- created an area to navigate to top of the list and placed margin to create a space from top --}}
+
+        <h2 class="my-3 text3">Submit your prayer request here.</h2>
+        <form id="createPrayer" class="form-group mb-5">
+          <textarea class="form-control" type="text" name="request" placeholder="prayer request" required></textarea>{{!-- gathers new prayer request --}}
+          <input class="mt-3" type="text" name="name" placeholder="name" required></input>{{!-- gathers new name --}}
+          <input class="mt-3" type="text" name="residence" placeholder="residence" required></input><br>{{!-- gathers new residence --}}
+          <button class="mt-3 btn btn-outline-primary" type="submit">Submit</button>{{!-- sends new info to DB --}}
+          <a class="mt-3 ml-3 btn btn-outline-primary" href="#top1">View top of list</a>{{!-- all new entries go to top of list this takes you there  --}}
+        </form>
+
+        <h3 class="mt-5 text3">Go to testimonies page.</h3>
+        <a class="mb-5 btn btn-outline-primary" href="/testimonies">Testimonies</a>
+
+      </div>{{!-- ('#allText') div ends here --}}
+
+      {{!-- this form is hidden untill user clicks update on their prayer request --}}
+      <div id="updateForm">
+        <h2 class="my-3 text3">Update prayer request.</h2>
+        <form id="updatePrayer" class="form-group mb-5">
+          <textarea class="form-control" type="text" name="request" placeholder="Update prayer request" required></textarea>{{!-- gathers updated prayer request --}}
+          <button class="mt-3 btn btn-outline-primary" type="submit">Submit update</button>{{!-- sends new info to DB --}}
+          <a class="mt-3 ml-3 btn btn-outline-danger" href="/">cancel</a>{{!-- refreshes page if user changes their mind or clicks update by mistake --}}
+        </form>
+      </div>
+
+    </div>{{!-- col-12-ends --}}
+
+  </div>{{!-- rows ends --}}
+</div>{{!-- container ends --}}
+
+<script type="text/javascript" src="/javascript/index.js"></script>
